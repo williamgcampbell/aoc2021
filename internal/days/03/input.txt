@@ -1,0 +1,1 @@
+empty input files make the reader go really slow

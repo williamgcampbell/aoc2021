@@ -1,20 +1,18 @@
-
 package _1
 
 import (
-	"aoc2021/internal/scanner"
 	_ "embed"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/williamgcampbell/aoc2021/internal/scanner"
 )
 
 //go:embed input.txt
 var input string
 
-// SolvePart1 solves day one, part one, of the 2021 advent of code question.
-// https://adventofcode.com/2021/day/1
 func SolvePart1() string {
 	r := strings.NewReader(input)
 	depths, err := scanner.ScanIntLines(r)

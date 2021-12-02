@@ -1,4 +1,4 @@
-module aoc2021
+module github.com/williamgcampbell/aoc2021
 
 go 1.17
 

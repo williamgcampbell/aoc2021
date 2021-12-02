@@ -1,17 +1,15 @@
-
 package _1
 
 import (
-	"aoc2021/internal/scanner"
 	_ "embed"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/williamgcampbell/aoc2021/internal/scanner"
 )
 
-// SolvePart2 solves day one, part two, of the 2021 advent of code question.
-// https://adventofcode.com/2021/day/1#part2
 func SolvePart2() string {
 	r := strings.NewReader(input)
 	depths, err := scanner.ScanIntLines(r)
@@ -26,7 +24,7 @@ func SolvePart2() string {
 func slidingWindowDepthIncrease(depths []int) int {
 	slidingDepths := make([]int, 0, len(depths)/3)
 	for i := 2; i < len(depths); i++ {
-		slidingDepths = append(slidingDepths, depths[i] + depths[i-1] + depths[i-2])
+		slidingDepths = append(slidingDepths, depths[i]+depths[i-1]+depths[i-2])
 	}
 	return depthIncrease(slidingDepths)
 }
