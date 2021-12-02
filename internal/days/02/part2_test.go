@@ -26,7 +26,7 @@ func TestCalculatePositionWithAim(t *testing.T) {
 		test := test
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
-			actual := calculatePositionWithAim(test.nums)
+			actual := calculatePosition(test.nums, true)
 			if actual != test.want {
 				t.Errorf("Got: %d, Want: %d.", actual, test.want)
 			}

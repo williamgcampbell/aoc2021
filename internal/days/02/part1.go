@@ -14,11 +14,11 @@ var input string
 func SolvePart1() string {
 	r := strings.NewReader(input)
 	v := scanner.ScanLines(r)
-	return strconv.Itoa(calculatePosition(v))
+	return strconv.Itoa(calculatePosition(v, false))
 }
 
-func calculatePosition(instructions []string) int {
-	depth, pos := 0, 0
+func calculatePosition(instructions []string, withAim bool) int {
+	depth, pos, aim := 0, 0, 0
 	for _, i := range instructions {
 		s := strings.Split(i, " ")
 		dir := s[0]
@@ -26,10 +26,21 @@ func calculatePosition(instructions []string) int {
 		switch dir {
 		case "forward":
 			pos += v
+			if withAim {
+				depth += aim * v
+			}
 		case "down":
-			depth += v
+			if withAim {
+				aim += v
+			} else {
+				depth += v
+			}
 		case "up":
-			depth -= v
+			if withAim {
+				aim -= v
+			} else {
+				depth -= v
+			}
 		}
 	}
 	return depth * pos
