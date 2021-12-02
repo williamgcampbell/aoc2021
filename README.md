@@ -1,4 +1,6 @@
 # Tis The Season
+![example workflow](https://github.com/williamgcampbell/aoc2021/actions/workflows/go.test.yml/badge.svg
+)
 
 This project hopes to solve as many days as possible on the 2021 advent of code challenge. 
 https://adventofcode.com/
