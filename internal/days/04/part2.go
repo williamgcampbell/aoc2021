@@ -9,10 +9,31 @@ import (
 
 func SolvePart2() string {
 	r := strings.NewReader(input)
-	lines := scanner.ScanLines(r)
-	return strconv.FormatInt(todo(lines), 10)
+	game := scanner.ScanUntilEmptyLine(r, BoardSeparator)
+	return strconv.Itoa(playToLose(game))
 }
 
-func todoPart2(lines []string) int64 {
+func playToLose(game []string) int {
+	draw := game[0]
+
+	boards := make([]*board, 0, len(game)-1)
+	for i := 1; i < len(game); i++ {
+		boards = append(boards, newBoard(game[i]))
+	}
+
+	drawArr := strings.Split(draw, ",")
+	for _, sv := range drawArr {
+		tmp := boards[:0]
+		v, _ := strconv.Atoi(sv)
+		for _, brd := range boards {
+			if !brd.markAndCheck(v) {
+				tmp = append(tmp, brd)
+			} else if len(boards) == 1 {
+				return boards[0].score(v)
+			}
+		}
+		boards = tmp
+	}
+
 	return 0
 }
