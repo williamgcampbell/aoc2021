@@ -1,4 +1,4 @@
-package _5
+package _8
 
 import (
 	"testing"
@@ -6,11 +6,11 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestSolvePart2(t *testing.T) {
-	require.Equal(t, SolvePart2(), "0")
+func TestSolvePart1(t *testing.T) {
+	require.Equal(t, SolvePart1(), "0")
 }
 
-func TestTodo2(t *testing.T) {
+func TestTodo(t *testing.T) {
 	tests := map[string]struct {
 		vals []string
 		want int
@@ -25,7 +25,7 @@ func TestTodo2(t *testing.T) {
 		test := test
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
-			actual := todo2(test.vals)
+			actual := todo(test.vals)
 			if actual != test.want {
 				t.Errorf("Got: %d, Want: %d.", actual, test.want)
 			}
