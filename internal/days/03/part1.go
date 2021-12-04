@@ -37,6 +37,9 @@ func powerConsumption(report []string) int64 {
 
 // powerConsumptionRate returns the most or least common bits for a corresponding position in a bit report.
 func powerConsumptionRate(report []string, measurement PowerConsumptionMeasurement) string {
+	// When a 1 bit is found for a position the array at that position is incremented, and vice versa for 0.
+	// The resulting array will contain a positive value if 1 is the most common bit for a position
+	// and negative if 0 is the most common bit.
 	mcs := make([]int, len(report[0]))
 	for _, bits := range report {
 		for i := 0; i < len(bits); i++ {
@@ -48,22 +51,23 @@ func powerConsumptionRate(report []string, measurement PowerConsumptionMeasureme
 		}
 	}
 
-	gammaRate := ""
+	rate := ""
 	for _, mc := range mcs {
+		// Note that zero values mean there are equal number of 1s and 0s. We round up in this case.
 		if mc >= 0 {
 			if measurement == Gamma {
-				gammaRate += "1"
+				rate += "1"
 			} else {
-				gammaRate += "0"
+				rate += "0"
 			}
 		} else {
 			if measurement == Gamma {
-				gammaRate += "0"
+				rate += "0"
 			} else {
-				gammaRate += "1"
+				rate += "1"
 			}
 		}
 	}
 
-	return gammaRate
+	return rate
 }
