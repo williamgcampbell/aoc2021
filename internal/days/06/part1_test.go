@@ -9,17 +9,24 @@ import (
 func TestSolvePart1(t *testing.T) {
 	t.Parallel()
 	day := &Day{}
-	require.Equal(t, day.SolvePart1(), "0")
+	require.Equal(t, day.SolvePart1(), "345387")
 }
 
-func TestTodo(t *testing.T) {
+func TestCountAll(t *testing.T) {
 	tests := map[string]struct {
-		vals []string
-		want int
+		vals      []int
+		afterDays int
+		want      int64
 	}{
 		"Advent of code example": {
-			vals: []string{},
-			want: 0,
+			vals:      []int{3, 4, 3, 1, 2},
+			afterDays: 80,
+			want:      5934,
+		},
+		"Advent of code example Part 2": {
+			vals:      []int{3, 4, 3, 1, 2},
+			afterDays: 256,
+			want:      26984457539,
 		},
 	}
 
@@ -27,7 +34,7 @@ func TestTodo(t *testing.T) {
 		test := test
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
-			actual := todo(test.vals)
+			actual := countAll(test.vals, test.afterDays)
 			if actual != test.want {
 				t.Errorf("Got: %d, Want: %d.", actual, test.want)
 			}

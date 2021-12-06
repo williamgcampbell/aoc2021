@@ -4,7 +4,37 @@ import (
 	"bufio"
 	"io"
 	"strconv"
+	"strings"
 )
+
+// ScanCSVInt returns an array of ints, split by new line
+func ScanCSVInt(handle io.Reader) ([][]int, error) {
+	scanner := bufio.NewScanner(handle)
+	scanner.Split(bufio.ScanLines)
+	var lines [][]int
+
+	for scanner.Scan() {
+		values, err := toCSVInt(scanner.Text())
+		if err != nil {
+			return nil, err
+		}
+		lines = append(lines, values)
+	}
+	return lines, nil
+}
+
+func toCSVInt(s string) ([]int, error) {
+	var values []int
+	strCSV := strings.Split(s, ",")
+	for _, sv := range strCSV {
+		v, err := strconv.Atoi(sv)
+		if err != nil {
+			return nil, err
+		}
+		values = append(values, v)
+	}
+	return values, nil
+}
 
 // ScanIntLines returns an array of ints, split by new line
 func ScanIntLines(handle io.Reader) ([]int, error) {
