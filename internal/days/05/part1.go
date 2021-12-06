@@ -15,7 +15,7 @@ var input string
 
 var format, _ = regexp.Compile("(?P<x1>[0-9]+),(?P<y1>[0-9]+) -> (?P<x2>[0-9]+),(?P<y2>[0-9]+)")
 
-func SolvePart1() string {
+func (d *Day) SolvePart1() string {
 	r := strings.NewReader(input)
 	lines := scanner.ScanLines(r)
 	return strconv.Itoa(overlappingLines(lines, true))

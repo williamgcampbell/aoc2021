@@ -11,7 +11,8 @@ import (
 
 func TestSolvePart2(t *testing.T) {
 	t.Parallel()
-	require.Equal(t, SolvePart2(), "8112")
+	day := &Day{}
+	require.Equal(t, day.SolvePart2(), "8112")
 }
 
 func TestTodoPart2(t *testing.T) {

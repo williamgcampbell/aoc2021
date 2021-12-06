@@ -10,7 +10,9 @@ import (
 )
 
 func TestSolvePart1(t *testing.T) {
-	require.Equal(t, SolvePart1(), "7380")
+	t.Parallel()
+	day := &Day{}
+	require.Equal(t, day.SolvePart1(), "7380")
 }
 
 func TestOverlappingLines(t *testing.T) {

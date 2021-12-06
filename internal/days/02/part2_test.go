@@ -8,7 +8,8 @@ import (
 
 func TestSolvePart2(t *testing.T) {
 	t.Parallel()
-	require.Equal(t, SolvePart2(), "1599311480")
+	day := &Day{}
+	require.Equal(t, day.SolvePart2(), "1599311480")
 }
 
 func TestCalculatePositionWithAim(t *testing.T) {

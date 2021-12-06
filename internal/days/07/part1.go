@@ -11,7 +11,7 @@ import (
 //go:embed input.txt
 var input string
 
-func SolvePart1() string {
+func (d *Day) SolvePart1() string {
 	r := strings.NewReader(input)
 	v := scanner.ScanLines(r)
 	return strconv.Itoa(todo(v))

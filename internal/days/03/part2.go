@@ -14,7 +14,7 @@ const (
 	Co2Scrubber
 )
 
-func SolvePart2() string {
+func (d *Day) SolvePart2() string {
 	r := strings.NewReader(input)
 	lines := scanner.ScanLines(r)
 	return strconv.FormatInt(lifeSupportRating(lines), 10)

@@ -2,22 +2,44 @@ package main
 
 import (
 	"fmt"
+	"log"
 
-	_1 "github.com/williamgcampbell/aoc2021/internal/days/01"
-	_2 "github.com/williamgcampbell/aoc2021/internal/days/02"
-	_3 "github.com/williamgcampbell/aoc2021/internal/days/03"
-	_4 "github.com/williamgcampbell/aoc2021/internal/days/04"
+	"github.com/williamgcampbell/aoc2021/internal/registry"
+
+	"github.com/williamgcampbell/aoc2021/internal/days"
 )
 
 var chorus = "On the %s day of Christmas the part %s solution was: %s\n"
 
 func main() {
-	fmt.Printf(chorus, "1st", "1", _1.SolvePart1())
-	fmt.Printf(chorus, "1st", "2", _1.SolvePart2())
-	fmt.Printf(chorus, "2nd", "1", _2.SolvePart1())
-	fmt.Printf(chorus, "2nd", "2", _2.SolvePart2())
-	fmt.Printf(chorus, "3rd", "1", _3.SolvePart1())
-	fmt.Printf(chorus, "3rd", "2", _3.SolvePart2())
-	fmt.Printf(chorus, "4th", "1", _4.SolvePart1())
-	fmt.Printf(chorus, "4th", "2", _4.SolvePart2())
+	r := registry.NewDayRegistry()
+	days.RegisterAll(r)
+
+	for i := 1; i <= 10; i++ {
+		if day, ok := r[i]; ok {
+			printDay(day)
+		} else {
+			log.Fatalf("Could not find day %d", i)
+		}
+	}
+}
+
+func printDay(day registry.Day) {
+	fmt.Printf(chorus, ordinalString(day.GetName()), "1", day.SolvePart1())
+	fmt.Printf(chorus, ordinalString(day.GetName()), "2", day.SolvePart2())
+}
+
+func ordinalString(i int) string {
+	j := i % 10
+	k := i % 100
+	if j == 1 && k != 11 {
+		return fmt.Sprintf("%dst", i)
+	}
+	if j == 2 && k != 12 {
+		return fmt.Sprintf("%dnd", i)
+	}
+	if j == 3 && k != 13 {
+		return fmt.Sprintf("%drd", i)
+	}
+	return fmt.Sprintf("%dth", i)
 }

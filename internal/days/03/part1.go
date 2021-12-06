@@ -11,7 +11,7 @@ import (
 //go:embed input.txt
 var input string
 
-func SolvePart1() string {
+func (d *Day) SolvePart1() string {
 	r := strings.NewReader(input)
 	lines := scanner.ScanLines(r)
 	return strconv.FormatInt(powerConsumption(lines), 10)

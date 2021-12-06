@@ -8,7 +8,8 @@ import (
 
 func TestSolvePart1(t *testing.T) {
 	t.Parallel()
-	require.Equal(t, SolvePart1(), "1692")
+	day := &Day{}
+	require.Equal(t, day.SolvePart1(), "1692")
 }
 
 func TestDepthIncrease(t *testing.T) {

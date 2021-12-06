@@ -13,7 +13,7 @@ var input string
 
 var BoardSeparator = ":"
 
-func SolvePart1() string {
+func (d *Day) SolvePart1() string {
 	r := strings.NewReader(input)
 	game := scanner.ScanUntilEmptyLine(r, BoardSeparator)
 	return strconv.Itoa(playToWin(game))

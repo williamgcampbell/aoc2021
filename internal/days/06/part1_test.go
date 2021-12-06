@@ -7,7 +7,9 @@ import (
 )
 
 func TestSolvePart1(t *testing.T) {
-	require.Equal(t, SolvePart1(), "0")
+	t.Parallel()
+	day := &Day{}
+	require.Equal(t, day.SolvePart1(), "0")
 }
 
 func TestTodo(t *testing.T) {
