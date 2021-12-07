@@ -45,7 +45,6 @@ func count(age int, afterDays int) int64 {
 		age:           age,
 		remainingDays: afterDays,
 	}
-	//if c, ok := AgeMap[ad]; ok {
 	if c, ok := cache.Get(ad); ok {
 		return c
 	}
@@ -58,7 +57,6 @@ func count(age int, afterDays int) int64 {
 	}
 
 	cache.Add(ad, c)
-	//AgeMap[ad] = c
 	return c
 }
 
