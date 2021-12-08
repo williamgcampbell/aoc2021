@@ -17,20 +17,36 @@ func outputValues(lines []string) int {
 	sum := 0
 	for _, line := range lines {
 		parts := strings.Split(line, " | ")
-		digits := strings.Split(parts[0], " ")
+		code := strings.Split(parts[0], " ")
 		output := strings.Split(parts[1], " ")
 
 		codes := make(map[int]string)
-		codes[1], digits = removeCode(digits, 2, "")
-		codes[4], digits = removeCode(digits, 4, "")
-		codes[7], digits = removeCode(digits, 3, "")
-		codes[8], digits = removeCode(digits, 7, "")
-		codes[3], digits = removeCode(digits, 5, codes[1])
-		codes[5], digits = removeCode(digits, 5, difference(codes[4], codes[1]))
-		codes[2], digits = removeCode(digits, 5, "")
-		codes[9], digits = removeCode(digits, 6, codes[4])
-		codes[0], digits = removeCode(digits, 6, codes[1])
-		codes[6], digits = removeCode(digits, 6, "")
+		// This was a pain and order does matter here.
+		// There are a handful of uniquely identifiable numbers just by the length of the code
+		codes[1], code = removeCode(code, 2, "")
+		codes[4], code = removeCode(code, 4, "")
+		codes[7], code = removeCode(code, 3, "")
+		codes[8], code = removeCode(code, 7, "")
+
+		// These are more complex. For instance, the number 3 unique in that it is made up of 5 codes and contains
+		// all-of-the codes from the number 1. In order to identify 3 we need to populate 1 first.
+		codes[3], code = removeCode(code, 5, codes[1])
+
+		// 5 will have codes from 4, as long as you take away the upper right value. We do this by taking the difference
+		// with the codes from 1. It loses the entire right side but it's still unique.
+		codes[5], code = removeCode(code, 5, difference(codes[4], codes[1]))
+
+		// At this point there are no longer any codes of length 5 that isn't a 2
+		codes[2], code = removeCode(code, 5, "")
+
+		// 9 contains everything from 4, but has six values
+		codes[9], code = removeCode(code, 6, codes[4])
+
+		// Now that 9 is out we can identify 0 by looking at six-digit codes with all codes from 1
+		codes[0], code = removeCode(code, 6, codes[1])
+
+		// This is the last one so code should only have one value left, sanity check on length
+		codes[6], code = removeCode(code, 6, "")
 
 		sb := ""
 		for _, s := range output {
