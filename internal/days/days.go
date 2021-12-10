@@ -11,6 +11,7 @@ import (
 	_8 "github.com/williamgcampbell/aoc2021/internal/days/08"
 	_9 "github.com/williamgcampbell/aoc2021/internal/days/09"
 	_10 "github.com/williamgcampbell/aoc2021/internal/days/10"
+	_11 "github.com/williamgcampbell/aoc2021/internal/days/11"
 	"github.com/williamgcampbell/aoc2021/internal/registry"
 )
 
@@ -26,6 +27,7 @@ func RegisterAll(registry registry.DayRegistry) {
 		&_8.Day{},
 		&_9.Day{},
 		&_10.Day{},
+		&_11.Day{},
 	)
 	if err != nil {
 		return
