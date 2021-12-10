@@ -1,25 +1,31 @@
 package _9
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+	"github.com/williamgcampbell/aoc2021/internal/scanner"
 )
 
 func TestSolvePart2(t *testing.T) {
 	t.Parallel()
 	day := &Day{}
-	require.Equal(t, day.SolvePart2(), "0")
+	require.Equal(t, day.SolvePart2(), "1092012")
 }
 
-func TestTodo2(t *testing.T) {
+func TestThreeLargestBasins(t *testing.T) {
 	tests := map[string]struct {
-		vals []string
+		vals string
 		want int
 	}{
 		"Advent of code example": {
-			vals: []string{},
-			want: 0,
+			vals: `2199943210
+3987894921
+9856789892
+8767896789
+9899965678`,
+			want: 1134,
 		},
 	}
 
@@ -27,7 +33,8 @@ func TestTodo2(t *testing.T) {
 		test := test
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
-			actual := todo2(test.vals)
+			r := strings.NewReader(test.vals)
+			actual := threeLargestBasins(scanner.ScanLines(r))
 			if actual != test.want {
 				t.Errorf("Got: %d, Want: %d.", actual, test.want)
 			}

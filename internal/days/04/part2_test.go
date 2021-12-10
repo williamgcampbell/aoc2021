@@ -15,7 +15,7 @@ func TestSolvePart2(t *testing.T) {
 	require.Equal(t, day.SolvePart2(), "8112")
 }
 
-func TestTodoPart2(t *testing.T) {
+func TestPlayToLose(t *testing.T) {
 	tests := map[string]struct {
 		bingo string
 		want  int
