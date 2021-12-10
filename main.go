@@ -15,7 +15,7 @@ func main() {
 	r := registry.NewDayRegistry()
 	days.RegisterAll(r)
 
-	for i := 1; i <= 10; i++ {
+	for i := 1; i <= 25; i++ {
 		if day, ok := r[i]; ok {
 			printDay(day)
 		} else {
