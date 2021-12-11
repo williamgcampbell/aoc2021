@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/williamgcampbell/aoc2021/internal/helpers"
 	"github.com/williamgcampbell/aoc2021/internal/scanner"
 )
 
@@ -15,7 +16,7 @@ func (d *Day) SolvePart2() string {
 }
 
 func threeLargestBasins(lines []string) int {
-	hm := heightMap(lines)
+	hm := helpers.PlanarInt(lines)
 
 	visited := make([][]bool, len(hm))
 	for i, v := range hm {
@@ -51,7 +52,7 @@ func walkBasin(hm [][]int, row, col int, visited [][]bool) int {
 	for k := 0; k < 4; k++ {
 		rni := row + rn[k]
 		cni := col + cn[k]
-		if safe(hm, rni, cni) {
+		if helpers.Safe(hm, rni, cni) {
 			if inBasin(hm[rni][cni]) && !visited[rni][cni] {
 				count += walkBasin(hm, rni, cni, visited)
 			}

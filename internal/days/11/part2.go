@@ -4,15 +4,25 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/williamgcampbell/aoc2021/internal/helpers"
 	"github.com/williamgcampbell/aoc2021/internal/scanner"
 )
 
 func (d *Day) SolvePart2() string {
 	r := strings.NewReader(input)
 	v := scanner.ScanLines(r)
-	return strconv.Itoa(todo2(v))
+	return strconv.Itoa(allFlash(v))
 }
 
-func todo2(s []string) int {
-	return 0
+func allFlash(s []string) int {
+	plane := helpers.PlanarInt(s)
+
+	stepCount := 0
+	for {
+		flashes := step(plane)
+		stepCount += 1
+		if flashes == 100 {
+			return stepCount
+		}
+	}
 }
