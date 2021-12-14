@@ -13,7 +13,8 @@ func TestSolvePart2(t *testing.T) {
 	t.Parallel()
 	day := &Day{}
 	fmt.Println(day.SolvePart2())
-	require.Equal(t, day.SolvePart2(), ` ##  #  #  ##   ##  ###   ##   ##  #  #
+	require.Equal(t, day.SolvePart2(), `
+ ##  #  #  ##   ##  ###   ##   ##  #  #
 #  # #  # #  # #  # #  # #  # #  # #  #
 #  # #### #    #    #  # #    #  # #  #
 #### #  # # ## #    ###  # ## #### #  #
@@ -49,7 +50,7 @@ func TestDecode(t *testing.T) {
 
 fold along y=7
 fold along x=5`,
-			want: "#####\n#   #\n#   #\n#   #\n#####\n",
+			want: "\n#####\n#   #\n#   #\n#   #\n#####\n",
 		},
 	}
 
@@ -58,7 +59,7 @@ fold along x=5`,
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 			r := strings.NewReader(test.vals)
-			actual := decode(scanner.ScanUntilEmptyLine(r, delimeter))
+			actual := decode(scanner.ScanUntilEmptyLine(r, delimiter))
 			if actual != test.want {
 				t.Errorf("Got: %s, Want: %s.", actual, test.want)
 			}

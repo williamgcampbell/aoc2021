@@ -6,28 +6,29 @@ import (
 	"github.com/williamgcampbell/aoc2021/internal/scanner"
 )
 
+// SolvePart2 solves part two
 func (d *Day) SolvePart2() string {
 	r := strings.NewReader(input)
-	v := scanner.ScanUntilEmptyLine(r, delimeter)
+	v := scanner.ScanUntilEmptyLine(r, delimiter)
 	return decode(v)
 }
 
 func decode(lines []string) string {
-	dots := strings.Split(lines[0], delimeter)
+	dots := strings.Split(lines[0], delimiter)
 	coords := make(map[string]struct{})
 	for _, dot := range dots {
 		coords[dot] = present
 	}
 
-	instructions := strings.Split(lines[1], delimeter)
+	instructions := strings.Split(lines[1], delimiter)
 	for _, instruction := range instructions {
 		coords = fold(coords, instruction)
 	}
 
-	return asciiPrint(coords)
+	return asciiString(coords)
 }
 
-func asciiPrint(m map[string]struct{}) string {
+func asciiString(m map[string]struct{}) string {
 
 	mx := 0
 	my := 0
@@ -42,6 +43,7 @@ func asciiPrint(m map[string]struct{}) string {
 	}
 
 	r := strings.Builder{}
+	r.WriteString("\n")
 	for y := 0; y <= my; y++ {
 		for x := 0; x <= mx; x++ {
 			c := &coordinate{x, y}

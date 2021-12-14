@@ -2,7 +2,6 @@ package helpers
 
 import (
 	"sort"
-	"strconv"
 	"strings"
 )
 
@@ -22,8 +21,7 @@ func PlanarInt(lines []string) [][]int {
 		ints := strings.Split(line, "")
 		temp := make([]int, 0, len(ints))
 		for _, is := range ints {
-			i, _ := strconv.Atoi(is)
-			temp = append(temp, i)
+			temp = append(temp, MustAtoI(is))
 		}
 		r = append(r, temp)
 	}

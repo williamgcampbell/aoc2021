@@ -50,7 +50,7 @@ fold along x=5`,
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 			r := strings.NewReader(test.vals)
-			actual := visibleDots(scanner.ScanUntilEmptyLine(r, delimeter), 1)
+			actual := visibleDots(scanner.ScanUntilEmptyLine(r, delimiter), 1)
 			if actual != test.want {
 				t.Errorf("Got: %d, Want: %d.", actual, test.want)
 			}

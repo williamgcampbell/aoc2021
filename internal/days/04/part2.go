@@ -4,9 +4,11 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/williamgcampbell/aoc2021/internal/helpers"
 	"github.com/williamgcampbell/aoc2021/internal/scanner"
 )
 
+// SolvePart2 solves part two
 func (d *Day) SolvePart2() string {
 	r := strings.NewReader(input)
 	game := scanner.ScanUntilEmptyLine(r, BoardSeparator)
@@ -24,7 +26,7 @@ func playToLose(game []string) int {
 	drawArr := strings.Split(draw, ",")
 	for _, sv := range drawArr {
 		tmp := boards[:0]
-		v, _ := strconv.Atoi(sv)
+		v := helpers.MustAtoI(sv)
 		for _, brd := range boards {
 			if !brd.markAndCheck(v) {
 				tmp = append(tmp, brd)

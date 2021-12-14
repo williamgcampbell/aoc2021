@@ -9,6 +9,7 @@ import (
 
 var TotalDaysPart2 = 256
 
+// SolvePart2 solves part two
 func (d *Day) SolvePart2() string {
 	r := strings.NewReader(input)
 	lines, _ := scanner.ScanCSVInt(r)

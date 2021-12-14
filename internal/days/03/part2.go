@@ -14,6 +14,7 @@ const (
 	Co2Scrubber
 )
 
+// SolvePart2 solves part two
 func (d *Day) SolvePart2() string {
 	r := strings.NewReader(input)
 	lines := scanner.ScanLines(r)

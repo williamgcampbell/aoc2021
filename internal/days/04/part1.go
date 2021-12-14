@@ -13,6 +13,7 @@ var input string
 
 var BoardSeparator = ":"
 
+// SolvePart1 solves part one
 func (d *Day) SolvePart1() string {
 	r := strings.NewReader(input)
 	game := scanner.ScanUntilEmptyLine(r, BoardSeparator)

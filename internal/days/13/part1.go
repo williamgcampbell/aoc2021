@@ -14,25 +14,26 @@ import (
 var input string
 
 var (
-	delimeter            = ";"
+	delimiter            = ";"
 	instructionFormat, _ = regexp.Compile("fold along (?P<dir>[x|y])=(?P<val>[0-9]+)")
 	present              struct{}
 )
 
+// SolvePart1 solves part one
 func (d *Day) SolvePart1() string {
 	r := strings.NewReader(input)
-	v := scanner.ScanUntilEmptyLine(r, delimeter)
+	v := scanner.ScanUntilEmptyLine(r, delimiter)
 	return strconv.Itoa(visibleDots(v, 1))
 }
 
 func visibleDots(lines []string, folds int) int {
-	dots := strings.Split(lines[0], delimeter)
+	dots := strings.Split(lines[0], delimiter)
 	coords := make(map[string]struct{})
 	for _, dot := range dots {
 		coords[dot] = present
 	}
 
-	instructions := strings.Split(lines[1], delimeter)
+	instructions := strings.Split(lines[1], delimiter)
 	for i, instruction := range instructions {
 		if folds > i {
 			coords = fold(coords, instruction)
@@ -49,7 +50,7 @@ func fold(coords map[string]struct{}, instruction string) map[string]struct{} {
 	dir := inst[1]
 	val, _ := strconv.Atoi(inst[2])
 	m := make(map[string]struct{})
-	for dot, _ := range coords {
+	for dot := range coords {
 		coord := newCoord(dot)
 		if dir == "x" {
 			if coord.x > val {
