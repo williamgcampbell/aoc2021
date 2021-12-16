@@ -15,6 +15,9 @@ func InsertSorted(ss []int, s int) []int {
 }
 
 // PlanarInt extracts a 2D array of ints from an array of strings
+// e.g. -
+// 1234
+// 5678
 func PlanarInt(lines []string) [][]int {
 	r := make([][]int, 0, len(lines))
 	for _, line := range lines {
