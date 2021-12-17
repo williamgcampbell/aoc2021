@@ -11,9 +11,12 @@ import (
 func (d *Day) SolvePart2() string {
 	r := strings.NewReader(input)
 	v := scanner.ScanLines(r)
-	return strconv.Itoa(todo2(v))
+	return strconv.Itoa(evaluate(v[0]))
 }
 
-func todo2(s []string) int {
-	return 0
+func evaluate(hex string) int {
+	bitStr := toBits(hex)
+	parser := newPacketParser(bitStr)
+	packets := ParseCount(parser, 1)
+	return packets[0].Value()
 }
