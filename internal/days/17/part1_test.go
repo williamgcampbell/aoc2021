@@ -9,17 +9,17 @@ import (
 func TestSolvePart1(t *testing.T) {
 	t.Parallel()
 	day := &Day{}
-	require.Equal(t, day.SolvePart1(), "0")
+	require.Equal(t, day.SolvePart1(), "7750")
 }
 
-func TestTodo(t *testing.T) {
+func TestLaunchProbe(t *testing.T) {
 	tests := map[string]struct {
-		vals []string
+		vals string
 		want int
 	}{
 		"Advent of code example": {
-			vals: []string{},
-			want: 0,
+			vals: `target area: x=20..30, y=-10..-5`,
+			want: 45,
 		},
 	}
 
@@ -27,7 +27,7 @@ func TestTodo(t *testing.T) {
 		test := test
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
-			actual := todo(test.vals)
+			actual, _ := launchProbe(test.vals)
 			if actual != test.want {
 				t.Errorf("Got: %d, Want: %d.", actual, test.want)
 			}

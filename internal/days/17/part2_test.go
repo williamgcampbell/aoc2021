@@ -12,14 +12,14 @@ func TestSolvePart2(t *testing.T) {
 	require.Equal(t, day.SolvePart2(), "0")
 }
 
-func TestTodo2(t *testing.T) {
+func TestLaunchProbeCount(t *testing.T) {
 	tests := map[string]struct {
-		vals []string
+		vals string
 		want int
 	}{
 		"Advent of code example": {
-			vals: []string{},
-			want: 0,
+			vals: `target area: x=20..30, y=-10..-5`,
+			want: 112,
 		},
 	}
 
@@ -27,7 +27,7 @@ func TestTodo2(t *testing.T) {
 		test := test
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
-			actual := todo2(test.vals)
+			_, actual := launchProbe(test.vals)
 			if actual != test.want {
 				t.Errorf("Got: %d, Want: %d.", actual, test.want)
 			}
