@@ -25,8 +25,24 @@ func main() {
 }
 
 func printDay(day registry.Day) {
-	fmt.Printf(chorus, ordinalString(day.GetName()), "1", day.SolvePart1())
-	fmt.Printf(chorus, ordinalString(day.GetName()), "2", day.SolvePart2())
+	printDayPart(1, day)
+	printDayPart(2, day)
+}
+
+func printDayPart(part int, day registry.Day) {
+	switch part {
+	case 1:
+		fmt.Printf(chorus, ordinalString(day.GetName()), "1", normalizeSolution(day.SolvePart1()))
+	case 2:
+		fmt.Printf(chorus, ordinalString(day.GetName()), "2", normalizeSolution(day.SolvePart2()))
+	}
+}
+
+func normalizeSolution(r string) string {
+	if r == "0" {
+		return "I don't know"
+	}
+	return r
 }
 
 func ordinalString(i int) string {

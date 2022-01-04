@@ -9,7 +9,7 @@ import (
 func TestSolvePart2(t *testing.T) {
 	t.Parallel()
 	day := &Day{}
-	require.Equal(t, day.SolvePart2(), "0")
+	require.Equal(t, day.SolvePart2(), "4120")
 }
 
 func TestLaunchProbeCount(t *testing.T) {
