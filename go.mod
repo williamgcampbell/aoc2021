@@ -3,7 +3,7 @@ module github.com/williamgcampbell/aoc2021
 go 1.17
 
 require (
-	github.com/google/go-cmp v0.5.6
+	github.com/google/go-cmp v0.6.0
 	github.com/stretchr/testify v1.7.0
 )
 
