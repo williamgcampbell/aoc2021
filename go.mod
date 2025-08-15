@@ -1,9 +1,9 @@
 module github.com/williamgcampbell/aoc2021
 
-go 1.17
+go 1.21
 
 require (
-	github.com/google/go-cmp v0.5.6
+	github.com/google/go-cmp v0.7.0
 	github.com/stretchr/testify v1.7.0
 )
 
